@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Anniversary ❤️</title>
+
+<style>
+body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right,#ff758c,#ff7eb3);
+  color:white;
+  overflow-x:hidden;
+  text-align:center;
+}
+
+/* welcome screen */
+#welcome{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#ff6f91;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:10;
+}
+
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+  background:white;
+  color:#ff4d6d;
+  margin-top:15px;
+}
+
+/* container */
+.container{
+  max-width:800px;
+  margin:auto;
+  padding:20px;
+}
+
+/* slideshow */
+.slideshow img{
+  width:100%;
+  border-radius:15px;
+}
+
+/* floating hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-100vh);}
+}
+
+/* rose petals */
+.petal{
+  position:fixed;
+  top:-20px;
+  color:#ffb6c1;
+  animation: fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="welcome">
+  <h1>💖 Welcome My Love 💖</h1>
+  <p>Enter the secret word</p>
+  <input type="password" id="pass" placeholder="Password">
+  <button onclick="checkPass()">Enter ❤️</button>
+</div>
+
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container" id="main" style="display:none;">
+
+<h1>Happy 1 Year ❤️ Jim</h1>
+
+<h2 id="timer"></h2>
+
+<!-- slideshow -->
+<div class="slideshow">
+  <img id="slide" src="photo1.jpg">
+</div>
+
+<h2>Our Journey ❤️</h2>
+
+<p>
+Today marks one year of us — one year of love, memories, growth, and a bond that has changed me in the most beautiful ways. When you came into my life, I never imagined that someone could become my safe place, my strength, and my greatest happiness all at once. Yet, in you, I found a home.
+</p>
+
+<p>
+You taught me that love is not just in grand gestures, but in the smallest things. Because of you, I smile more, worry less, and believe in forever.
+</p>
+
+<p>
+You are not just a part of my life, Jim… you are one of the best things that ever happened to me.
+</p>
+
+<button onclick="fireworks()">Will you stay with me forever? ❤️</button>
+
+<h2 id="reply"></h2>
+
+</div>
+
+<script>
+// PASSWORD
+function checkPass(){
+  let p=document.getElementById("pass").value;
+  if(p==="FASHRA"){
+    document.getElementById("welcome").style.display="none";
+    document.getElementById("main").style.display="block";
+  } else alert("Wrong password ❤️");
+}
+
+// TIMER
+let startDate = new Date("March 02, 2025").getTime();
+
+setInterval(()=>{
+  let now = new Date().getTime();
+  let diff = now - startDate;
+
+  let days = Math.floor(diff/(1000*60*60*24));
+  document.getElementById("timer").innerHTML =
+  "Together for " + days + " days ❤️";
+},1000);
+
+// SLIDESHOW
+let images=["photo1.jpg","photo2.jpg","photo3.jpg"];
+let i=0;
+setInterval(()=>{
+  i=(i+1)%images.length;
+  document.getElementById("slide").src=images[i];
+},3000);
+
+// HEARTS
+setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},500);
+
+// ROSE PETALS
+setInterval(()=>{
+  let petal=document.createElement("div");
+  petal.className="petal";
+  petal.innerHTML="🌹";
+  petal.style.left=Math.random()*100+"vw";
+  petal.style.animationDuration=(3+Math.random()*5)+"s";
+  document.body.appendChild(petal);
+  setTimeout(()=>petal.remove(),8000);
+},700);
+
+// FIREWORKS
+function fireworks(){
+  document.getElementById("reply").innerHTML="Forever with you ❤️";
+  for(let i=0;i<50;i++){
+    let spark=document.createElement("div");
+    spark.innerHTML="✨";
+    spark.style.position="fixed";
+    spark.style.left=Math.random()*100+"vw";
+    spark.style.top=Math.random()*100+"vh";
+    spark.style.fontSize="20px";
+    document.body.appendChild(spark);
+    setTimeout(()=>spark.remove(),2000);
+  }
+}
+</script>
+
+</body>
+</html>
